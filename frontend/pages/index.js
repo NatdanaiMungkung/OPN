@@ -23,7 +23,7 @@ export default function Home() {
             <div>3</div>
           </div>
         </div>
-        <BsPlusCircleFill />
+        <div className='mt-6 text-light-blue hover:text-white hover:cursor-pointer'><BsPlusCircleFill size={'36px'} /></div>
       </div>
     </div>
   );
