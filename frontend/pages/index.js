@@ -1,3 +1,4 @@
+import { BsPlusCircleFill } from 'react-icons/bs'
 export default function Home() {
   return (
     <div>
@@ -22,6 +23,7 @@ export default function Home() {
             <div>3</div>
           </div>
         </div>
+        <BsPlusCircleFill />
       </div>
     </div>
   );
