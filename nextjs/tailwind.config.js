@@ -21,6 +21,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Roboto Slab', ...defaultTheme.fontFamily.sans],
+        fancy: ['Roboto Slab']
       },
     },
   },
