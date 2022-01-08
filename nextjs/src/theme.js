@@ -3,16 +3,20 @@ import { red } from '@mui/material/colors';
 
 // Create a theme instance.
 const theme = createTheme({
+  typography: {
+    fontFamily: 'Roboto Slab',
+  },
   palette: {
     primary: {
-      main: '#556cd6',
-    },
-    secondary: {
-      main: '#19857b',
+      main: '#fff',
     },
     error: {
       main: red.A400,
     },
+    // text: {
+    //   primary: '#fff',
+    //   secondary: '#000'
+    // }
   },
 });
 
