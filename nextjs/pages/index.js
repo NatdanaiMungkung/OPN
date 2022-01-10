@@ -17,24 +17,27 @@ import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import { styled } from '@mui/system';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import { getPatients } from '../api/patientApi'
 
 const TextFieldStyled = styled(TextField)({
   color: 'white'
 });
 
-export default function Index() {
+export default function Index({ patients }) {
+  console.log('patients', patients);
   const [fromDate, setFromDate] = React.useState(null);
   const [toTime, setToTime] = React.useState(null);
+  const [patientIndex, setPatientIndex] = React.useState(0);
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
     <div className="font-fancy">
       <div className="mt-6 flex justify-center sm:text-xl md:text-4xl  text-yellow font-bold tracking-wider">Covid Timeline Generator</div>
 
       <div className="mt-6 flex ml-auto mr-auto sm:w-full md:w-3/5 bg-light-blue rounded">
-        <Tabs value={0} onChange={()=> {}} aria-label="basic tabs example">
-            <Tab label={<div className='flex flex-col'><span>Patient</span><span>1</span></div>}  />
-            <Tab label={<div className='flex flex-col'><span>Patient</span><span>1</span></div>} />
-            <Tab label={<div className='flex flex-col'><span>Patient</span><span>1</span></div>} />
+        <Tabs value={patientIndex} onChange={(i)=> setPatientIndex(i)} aria-label="basic tabs example">
+            {patients.map((patient,i) => (
+              <Tab label={<div className='flex flex-col'><span>Patient</span><span>{i + 1}</span></div>}  />
+            ))}
           </Tabs>
         <div className='mt-4 ml-4 text-lighter-blue hover:text-white hover:cursor-pointer'><BsPlusCircleFill size={'24px'} /></div>
       </div>
@@ -187,4 +190,14 @@ export default function Index() {
     </div>
     </LocalizationProvider>
   );
+}
+
+
+export async function getStaticProps() {
+  const patients = await getPatients();
+  return {
+    props: {
+      patients: patients.data.data.patients
+    }
+  }
 }
