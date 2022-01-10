@@ -1,9 +1,9 @@
 module.exports = {
   parserOptions: {
-    ecmaVersion: 2020, 
-    sourceType: 'module', 
+    ecmaVersion: 2020,
+    sourceType: 'module',
     ecmaFeatures: {
-      jsx: true 
+      jsx: true
     }
   },
   env: {
@@ -20,7 +20,7 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:jsx-a11y/recommended',
-    'plugin:react/recommended', 
+    'plugin:react/recommended',
     'plugin:prettier/recommended',
     'plugin:sonarjs/recommended',
     'plugin:unicorn/recommended',

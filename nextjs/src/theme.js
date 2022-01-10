@@ -4,20 +4,20 @@ import { red } from '@mui/material/colors';
 // Create a theme instance.
 const theme = createTheme({
   typography: {
-    fontFamily: 'Roboto Slab',
+    fontFamily: 'Roboto Slab'
   },
   palette: {
     primary: {
-      main: '#fff',
+      main: '#fff'
     },
     error: {
-      main: red.A400,
-    },
+      main: red.A400
+    }
     // text: {
     //   primary: '#fff',
     //   secondary: '#000'
     // }
-  },
+  }
 });
 
 export default theme;
