@@ -39,3 +39,4 @@ Easy to setup without any complicated dependency, suitable for POC project
 * Refactor for maintainability and extendability
 * Implement checking condition (eg. max 8 patients and timeline must not conflicted) on both frontend and backend layer (Currently check only on Frontend)
 * Add healthcheck and metric to monitor usage
+* UI refactor
