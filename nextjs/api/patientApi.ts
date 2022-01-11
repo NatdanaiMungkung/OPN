@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Patient } from '../models/patient';
+import { Timeline } from '../models/timeline';
 
 const BASE_URL = 'http://localhost:3000';
 
@@ -15,6 +16,7 @@ export const getPatients = async () => {
             gender
             age
             occupation
+            createdAt
             timelines {
               id
               fromDate
@@ -22,6 +24,7 @@ export const getPatients = async () => {
               detail
               locationType
               locationName
+              createdAt
             }
           }
         }
@@ -54,6 +57,7 @@ export const savePatient = async (patient: Patient) => {
               detail
               locationType
               locationName
+              createdAt
             }
           }
         }
@@ -72,6 +76,51 @@ export const removePatient = async (id: string) => {
           removePatient(
             id: "${id}"
           )
+        }
+        `
+    }
+  });
+};
+
+export const removeTimeline = async (id: string) => {
+  return await axios({
+    url: BASE_URL + '/graphql',
+    method: 'post',
+    data: {
+      query: `
+        mutation removeTimeline {
+          removeTimeline(
+            id: "${id}"
+          )
+        }
+        `
+    }
+  });
+};
+
+export const createTimeline = async (timeline: Timeline) => {
+  return await axios({
+    url: BASE_URL + '/graphql',
+    method: 'post',
+    data: {
+      query: `
+        mutation createTimeline {
+          createTimeline(
+            locationName: "${timeline.locationName}",
+            locationType: "${timeline.locationType}",
+            detail: "${timeline.detail}",
+            toDate: "${timeline.toDate}",
+            fromDate: "${timeline.fromDate}",
+            patientId: "${timeline.patientId}"
+          ) {
+            id
+            fromDate
+            toDate
+            detail
+            locationType
+            locationName
+            createdAt
+          }
         }
         `
     }
